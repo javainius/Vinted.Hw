@@ -1,0 +1,3 @@
+Things to note:
+- I used LINQ which is not additional but built in library in C#
+- It always depends on agreement but in my opinion void methods should be used to update repositories, make API calls or change some application states. For this reason when I make a change for an object I'm always returning it. 

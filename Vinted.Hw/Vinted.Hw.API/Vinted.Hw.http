@@ -1,0 +1,6 @@
+@Vinted.Hw_HostAddress = http://localhost:5262
+
+GET {{Vinted.Hw_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
