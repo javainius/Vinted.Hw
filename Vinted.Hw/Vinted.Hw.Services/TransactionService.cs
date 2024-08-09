@@ -38,6 +38,7 @@ namespace Vinted.Hw.Services
         public List<TransactionModel> GetProcessedTransactions(List<string> transactionLines)
         {
             List<TransactionModel> transactions = _parsingService.ParseTransactions(transactionLines);
+            List<TransactionModel> processedTransactions = new();
 
             foreach (TransactionModel transaction in transactions)
             {
@@ -46,10 +47,12 @@ namespace Vinted.Hw.Services
                     transaction.TransactionData = ProcessTransactionData(transaction.TransactionData);
                 }
 
-                _transactionRepository.SaveTransaction(transaction.TransactionModelToTransactionEntity());
+                TransactionEntity savedTransaction = _transactionRepository.SaveTransaction(transaction.TransactionModelToTransactionEntity());
+                processedTransactions.Add(savedTransaction.TransactionEntityToTransactionModel());
+
             }
 
-            return transactions;
+            return processedTransactions;
         }
 
         public TransactionDataModel ProcessTransactionData(TransactionDataModel transaction)
@@ -71,7 +74,7 @@ namespace Vinted.Hw.Services
                 .TransactionEntitiesToTransactionModels();
 
             return allTransactions
-                .Where(x => x.TransactionData.Date.Year == transactionDate.Year && x.TransactionData.Date.Month == transactionDate.Month)
+                .Where(x => !x.IsIgnored && x.TransactionData.Date.Year == transactionDate.Year && x.TransactionData.Date.Month == transactionDate.Month)
                 .ToList();
         }
 
@@ -89,25 +92,30 @@ namespace Vinted.Hw.Services
             return transaction;
         }
 
-        private TransactionDataModel ApplyDiscount(TransactionDataModel transaction, List<TransactionModel> currentMonthTransactions, double currentMonthDiscountBalance)
+        private TransactionDataModel ApplyDiscount(
+            TransactionDataModel transaction, 
+            List<TransactionModel> currentMonthTransactions, 
+            double currentMonthDiscountBalance
+            )
         {
-            if (transaction.PackageSize == Models.PackageSize.Small)
+            if (transaction.PackageSize == PackageSize.Small)
             {
                 List<ShippingPriceModel> shippingPriceModels = _shippingPriceRepository
                     .GetShippingPriceTerms()
                     .ShippingPriceTermEntitiesToShippingPriceTermModels();
-                double lowestSPackagePrice = GetLowestSPackagePrice(shippingPriceModels);
-                double sPackageDiscount = transaction.Price - lowestSPackagePrice;
 
-                if (sPackageDiscount <= currentMonthDiscountBalance)
+                decimal lowestSPackagePrice = (decimal)GetLowestSPackagePrice(shippingPriceModels);
+                decimal sPackageDiscount = (decimal)transaction.Price - lowestSPackagePrice;
+
+                if (sPackageDiscount <= (decimal)currentMonthDiscountBalance)
                 {
-                    transaction.Price = lowestSPackagePrice;
-                    transaction.Discount = sPackageDiscount;
+                    transaction.Price = (double)lowestSPackagePrice;
+                    transaction.Discount = (double)sPackageDiscount;
                 }
                 else
                 {
-                    transaction.Price = transaction.Price - currentMonthDiscountBalance;
-                    transaction.Discount = currentMonthDiscountBalance;
+                    transaction.Price = (double)((decimal)transaction.Price - (decimal)currentMonthDiscountBalance);
+                    transaction.Discount = (double)(decimal)currentMonthDiscountBalance;
                 }
             }
 
@@ -115,14 +123,15 @@ namespace Vinted.Hw.Services
             {
                 if (transaction.Price < currentMonthDiscountBalance)
                 {
-                    transaction.Price = transaction.Price - currentMonthDiscountBalance;
-                    transaction.Discount = currentMonthDiscountBalance;
-                }
-                else
-                {
                     transaction.Discount = transaction.Price;
                     transaction.Price = 0;
                 }
+                else 
+                {
+                    transaction.Price = transaction.Price - currentMonthDiscountBalance;
+                    transaction.Discount = currentMonthDiscountBalance;
+                }
+
             }
 
             return transaction;
@@ -148,19 +157,20 @@ namespace Vinted.Hw.Services
             return false;
         }
 
+        // had to use casting to decimal due to known C# floating point issue
         private double GetCurrentAccumulatedDiscountBalance(List<TransactionModel> currentMonthTransactions)
         {
-            double currentMonthDiscountBalance = _accumulatedDiscountTermRepository
+            decimal currentMonthDiscountBalance = (decimal)_accumulatedDiscountTermRepository
                 .GetAccumulatedDiscountTerm()
                 .AccumulatedDiscountTermEntityToAccumulatedDiscountTermModel()
                 .DiscountAmount;
 
             foreach (TransactionModel curentMonthTransaction in currentMonthTransactions)
             {
-                currentMonthDiscountBalance -= curentMonthTransaction.TransactionData.Discount;
+                currentMonthDiscountBalance -= (decimal)curentMonthTransaction.TransactionData.Discount;
             }
 
-            return currentMonthDiscountBalance;
+            return (double)currentMonthDiscountBalance;
         }
 
         private double GetLowestSPackagePrice(List<ShippingPriceModel> shippingPriceModels)

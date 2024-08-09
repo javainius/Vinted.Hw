@@ -33,6 +33,23 @@ namespace Vinted.Hw.Persistence
             return JsonSerializer.Deserialize<List<T>>(json) ?? new List<T>();
         }
 
+        protected T GetEntity()
+        {
+            if (!File.Exists(_filePath))
+            {
+                return default;
+            }
+
+            string json = File.ReadAllText(_filePath);
+
+            if (string.IsNullOrWhiteSpace(json))
+            {
+                return default;
+            }
+
+            return JsonSerializer.Deserialize<T>(json);
+        }
+
         protected void SaveEntities(List<T> entities)
         {
             string json = JsonSerializer.Serialize(entities, new JsonSerializerOptions { WriteIndented = true });

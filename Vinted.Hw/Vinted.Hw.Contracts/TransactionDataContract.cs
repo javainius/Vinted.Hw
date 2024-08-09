@@ -8,7 +8,7 @@ namespace Vinted.Hw.Contracts
 {
     public class TransactionDataContract
     {
-        public string Date { get; set; }
+        public DateOnly Date { get; set; }
         public string PackageSize { get; set; }
         public string CarrierCode { get; set; }
         public double Price { get; set; }

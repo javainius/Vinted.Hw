@@ -11,6 +11,6 @@ namespace Vinted.Hw.Persistence
     {
         public FreeShipmentTermRepository(string filePath) : base(filePath) {}
 
-        public FreeShipmentTermEntity GetFreeShipmentTerm() => GetEntities().First();
+        public FreeShipmentTermEntity GetFreeShipmentTerm() => GetEntity();
     }
 }

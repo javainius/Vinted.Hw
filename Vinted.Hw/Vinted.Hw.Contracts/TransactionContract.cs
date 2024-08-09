@@ -9,7 +9,7 @@ namespace Vinted.Hw.Contracts
     public class TransactionContract
     {
         public string TransactionLine { get; set; }
-        public string IsIgnored { get; set; }
+        public bool IsIgnored { get; set; }
         public TransactionDataContract TransactionData { get; set; }
     }
 }

@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Vinted.Hw.Contracts;
+using Vinted.Hw.Models;
+using Vinted.Hw.Services;
 
 namespace Vinted.Hw.API.Controllers
 {
@@ -7,6 +10,13 @@ namespace Vinted.Hw.API.Controllers
     [ApiController]
     public class DiscountController : ControllerBase
     {
+        private readonly ITransactionService _transactionService;
+
+        public DiscountController(ITransactionService transactionService)
+        {
+            _transactionService = transactionService;
+        }
+
         [HttpPost("ProcessDiscounts")]
         public async Task<IActionResult> ProcessDiscounts(IFormFile file)
         {
@@ -28,10 +38,12 @@ namespace Vinted.Hw.API.Controllers
             return Ok(processedContent);
         }
 
-        private IEnumerable<string> ProcessFileContent(IEnumerable<string> lines)
+        private List<TransactionContract> ProcessFileContent(List<string> lines)
         {
-            // Example processing logic, could be more complex
-            return lines.Select(line => line.ToUpper());
+            List<string> transactionLines = lines.Select(line => line.ToUpper()).ToList();
+            List<TransactionContract> transactionContracts = _transactionService.GetProcessedTransactions(transactionLines).TransactionModelsToTransactionContracts();
+
+            return transactionContracts;
         }
     }
 }

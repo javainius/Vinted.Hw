@@ -1,0 +1,227 @@
+[
+  {
+    "TransactionLine": "2015-02-01 S MR",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-02-01",
+      "PackageSize": "S",
+      "CarrierCode": "MR",
+      "Price": 1.5,
+      "Discount": 0.5
+    }
+  },
+  {
+    "TransactionLine": "2015-02-02 S MR",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-02-02",
+      "PackageSize": "S",
+      "CarrierCode": "MR",
+      "Price": 1.5,
+      "Discount": 0.5
+    }
+  },
+  {
+    "TransactionLine": "2015-02-03 L LP",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-02-03",
+      "PackageSize": "L",
+      "CarrierCode": "LP",
+      "Price": 6.9,
+      "Discount": 0
+    }
+  },
+  {
+    "TransactionLine": "2015-02-05 S LP",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-02-05",
+      "PackageSize": "S",
+      "CarrierCode": "LP",
+      "Price": 1.5,
+      "Discount": 0
+    }
+  },
+  {
+    "TransactionLine": "2015-02-06 S MR",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-02-06",
+      "PackageSize": "S",
+      "CarrierCode": "MR",
+      "Price": 1.5,
+      "Discount": 0.5
+    }
+  },
+  {
+    "TransactionLine": "2015-02-06 L LP",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-02-06",
+      "PackageSize": "L",
+      "CarrierCode": "LP",
+      "Price": 6.9,
+      "Discount": 0
+    }
+  },
+  {
+    "TransactionLine": "2015-02-07 L MR",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-02-07",
+      "PackageSize": "L",
+      "CarrierCode": "MR",
+      "Price": 4,
+      "Discount": 0
+    }
+  },
+  {
+    "TransactionLine": "2015-02-08 M MR",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-02-08",
+      "PackageSize": "M",
+      "CarrierCode": "MR",
+      "Price": 3,
+      "Discount": 0
+    }
+  },
+  {
+    "TransactionLine": "2015-02-09 L LP",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-02-09",
+      "PackageSize": "L",
+      "CarrierCode": "LP",
+      "Price": 0,
+      "Discount": 6.9
+    }
+  },
+  {
+    "TransactionLine": "2015-02-10 L LP",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-02-10",
+      "PackageSize": "L",
+      "CarrierCode": "LP",
+      "Price": 6.9,
+      "Discount": 0
+    }
+  },
+  {
+    "TransactionLine": "2015-02-10 S MR",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-02-10",
+      "PackageSize": "S",
+      "CarrierCode": "MR",
+      "Price": 1.5,
+      "Discount": 0.5
+    }
+  },
+  {
+    "TransactionLine": "2015-02-10 S MR",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-02-10",
+      "PackageSize": "S",
+      "CarrierCode": "MR",
+      "Price": 1.5,
+      "Discount": 0.5
+    }
+  },
+  {
+    "TransactionLine": "2015-02-11 L LP",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-02-11",
+      "PackageSize": "L",
+      "CarrierCode": "LP",
+      "Price": 6.9,
+      "Discount": 0
+    }
+  },
+  {
+    "TransactionLine": "2015-02-12 M MR",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-02-12",
+      "PackageSize": "M",
+      "CarrierCode": "MR",
+      "Price": 3,
+      "Discount": 0
+    }
+  },
+  {
+    "TransactionLine": "2015-02-13 M LP",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-02-13",
+      "PackageSize": "M",
+      "CarrierCode": "LP",
+      "Price": 4.9,
+      "Discount": 0
+    }
+  },
+  {
+    "TransactionLine": "2015-02-15 S MR",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-02-15",
+      "PackageSize": "S",
+      "CarrierCode": "MR",
+      "Price": 1.5,
+      "Discount": 0.5
+    }
+  },
+  {
+    "TransactionLine": "2015-02-17 L LP",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-02-17",
+      "PackageSize": "L",
+      "CarrierCode": "LP",
+      "Price": 6.9,
+      "Discount": 0
+    }
+  },
+  {
+    "TransactionLine": "2015-02-17 S MR",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-02-17",
+      "PackageSize": "S",
+      "CarrierCode": "MR",
+      "Price": 1.9,
+      "Discount": 0.1
+    }
+  },
+  {
+    "TransactionLine": "2015-02-24 L LP",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-02-24",
+      "PackageSize": "L",
+      "CarrierCode": "LP",
+      "Price": 6.9,
+      "Discount": 0
+    }
+  },
+  {
+    "TransactionLine": "2015-02-29 CUSPS",
+    "IsIgnored": true,
+    "TransactionData": null
+  },
+  {
+    "TransactionLine": "2015-03-01 S MR",
+    "IsIgnored": false,
+    "TransactionData": {
+      "Date": "2015-03-01",
+      "PackageSize": "S",
+      "CarrierCode": "MR",
+      "Price": 1.5,
+      "Discount": 0.5
+    }
+  }
+]

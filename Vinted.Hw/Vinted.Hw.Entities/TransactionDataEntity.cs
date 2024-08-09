@@ -9,7 +9,7 @@ namespace Vinted.Hw.Entities
     public class TransactionDataEntity
     {
         public DateOnly Date { get; set; }
-        public PackageSize PackageSize { get; set; }
+        public string PackageSize { get; set; }
         public string CarrierCode { get; set; }
         public double Price { get; set; }
         public double Discount { get; set; }

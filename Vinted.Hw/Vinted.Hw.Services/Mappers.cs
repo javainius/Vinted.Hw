@@ -20,8 +20,8 @@ namespace Vinted.Hw.Services
         {
             return new()
             {
-                CarrierCode = shippingPriceTermEntity.Provider,
-                PackageSize = (Models.PackageSize)shippingPriceTermEntity.PackageSize,
+                CarrierCode = shippingPriceTermEntity.CarrierCode,
+                PackageSize = shippingPriceTermEntity.PackageSize.StringToPackageSize(),
                 Price = shippingPriceTermEntity.Price
             };
         }
@@ -37,7 +37,7 @@ namespace Vinted.Hw.Services
             {
                 TransactionLine = transactionEntity.TransactionLine,
                 IsIgnored = transactionEntity.IsIgnored,
-                TransactionData = transactionEntity.TransactionData.TransactionDataEntityToTransactionDataModel()
+                TransactionData = transactionEntity.TransactionData?.TransactionDataEntityToTransactionDataModel()
             };
         }
 
@@ -47,7 +47,7 @@ namespace Vinted.Hw.Services
             {
                 CarrierCode = transactionDataEntity.CarrierCode,
                 Date = transactionDataEntity.Date,
-                PackageSize = (Models.PackageSize)transactionDataEntity.PackageSize,
+                PackageSize = transactionDataEntity.PackageSize.StringToPackageSize(),
                 Price = transactionDataEntity.Price,
                 Discount = transactionDataEntity.Discount,
             };
@@ -65,7 +65,7 @@ namespace Vinted.Hw.Services
         {
             return new()
             {
-                PackageSize = (Models.PackageSize)freeShippmentTermEntity.PackageSize,
+                PackageSize = freeShippmentTermEntity.PackageSize.StringToPackageSize(),
                 CarrierCode = freeShippmentTermEntity.CarrierCode,
                 TimesPerMonth = freeShippmentTermEntity.TimesPerMonth,
                 WhichEveryShipment = freeShippmentTermEntity.WhichEveryShipment
@@ -78,7 +78,7 @@ namespace Vinted.Hw.Services
             {
                 TransactionLine = transactionModel.TransactionLine,
                 IsIgnored = transactionModel.IsIgnored,
-                TransactionData = transactionModel.TransactionData.TransactionDataModelToTransactionDataEntity()
+                TransactionData = transactionModel.TransactionData?.TransactionDataModelToTransactionDataEntity()
             };
         }
 
@@ -88,13 +88,13 @@ namespace Vinted.Hw.Services
             {
                 CarrierCode = transactionDataModel.CarrierCode,
                 Date = transactionDataModel.Date,
-                PackageSize = (Entities.PackageSize)transactionDataModel.PackageSize,
+                PackageSize = transactionDataModel.PackageSize.PackageSizeToString(),
                 Price = transactionDataModel.Price,
                 Discount = transactionDataModel.Discount,
             };
         }
 
-        public static Models.PackageSize StringToPackageSize(string packageSize)
+        public static Models.PackageSize StringToPackageSize(this string packageSize)
         {
             return packageSize switch
             {
@@ -105,7 +105,7 @@ namespace Vinted.Hw.Services
             };
         }
 
-        public static string PackageSizeToString(Models.PackageSize packageSize)
+        public static string PackageSizeToString(this PackageSize packageSize)
         {
             return packageSize switch
             {

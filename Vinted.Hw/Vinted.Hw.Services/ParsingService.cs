@@ -47,7 +47,7 @@ namespace Vinted.Hw.Services
                 transactionModel.TransactionData = new TransactionDataModel
                 {
                     Date = DateOnly.Parse(transactionLineParts[0]),
-                    PackageSize = transactionLineParts[1],
+                    PackageSize = transactionLineParts[1].StringToPackageSize(),
                     CarrierCode = transactionLineParts[2]
                 };
             }

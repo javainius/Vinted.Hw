@@ -1,0 +1,32 @@
+[
+  {
+    "PackageSize": "S",
+    "CarrierCode": "LP",
+    "Price": 1.5
+  },
+  {
+    "PackageSize": "M",
+    "CarrierCode": "LP",
+    "Price": 4.9
+  },
+  {
+    "PackageSize": "L",
+    "CarrierCode": "LP",
+    "Price": 6.9
+  },
+  {
+    "PackageSize": "S",
+    "CarrierCode": "MR",
+    "Price": 2
+  },
+  {
+    "PackageSize": "M",
+    "CarrierCode": "MR",
+    "Price": 3
+  },
+  {
+    "PackageSize": "L",
+    "CarrierCode": "MR",
+    "Price": 4
+  }
+]

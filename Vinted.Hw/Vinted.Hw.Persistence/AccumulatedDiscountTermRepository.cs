@@ -11,6 +11,6 @@ namespace Vinted.Hw.Persistence
     {
         public AccumulatedDiscountTermRepository(string filePath) : base(filePath) {}
 
-        public AccumulatedDiscountTermEntity GetAccumulatedDiscountTerm() => GetEntities().First();
+        public AccumulatedDiscountTermEntity GetAccumulatedDiscountTerm() => GetEntity();
     }
 }

@@ -8,8 +8,8 @@ namespace Vinted.Hw.Entities
 {
     public class ShippingPriceEntity
     {
-        public string Provider { get; set; }
-        public PackageSize PackageSize { get; set; }
+        public string CarrierCode { get; set; }
+        public string PackageSize { get; set; }
         public double Price { get; set; }
     }
 }
