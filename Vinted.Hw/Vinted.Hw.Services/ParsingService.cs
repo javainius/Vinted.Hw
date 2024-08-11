@@ -42,23 +42,34 @@ namespace Vinted.Hw.Services
 
             string[] transactionLineParts = transactionLine.Split(' ');
 
-            if (IsLineValid(transactionLineParts))
+            if (transactionLineParts.Length == 3)
             {
-                transactionModel.IsIgnored = false;
-                transactionModel.TransactionData = new TransactionDataModel
+                try
                 {
-                    Date = DateOnly.Parse(transactionLineParts[0]),
-                    PackageSize = transactionLineParts[1].StringToPackageSize(),
-                    CarrierCode = transactionLineParts[2]
-                };
+                    DateOnly date = DateOnly.Parse(transactionLineParts[0]);
+                    PackageSize packageSize = transactionLineParts[1].StringToPackageSize();
+                    string carrierCode = transactionLineParts[2];
+
+                    ValidateCarrierCode(carrierCode);
+
+                    transactionModel.TransactionData = new TransactionDataModel
+                    {
+                        Date = date,
+                        PackageSize = packageSize,
+                        CarrierCode = carrierCode
+                    };
+
+                    transactionModel.IsIgnored = false;
+                }
+                catch (Exception ex)
+                {
+                }
             }
 
             return transactionModel;
         }
 
-        private bool IsLineValid(string[] lineParts) => lineParts.Length == 3 && IsProviderValid(lineParts[2]);
-
-        private bool IsProviderValid(string provider)
+        private void ValidateCarrierCode(string provider)
         {
             List<ShippingPriceModel> shippingPriceTermModels = _shippingPriceRepository
                 .GetShippingPriceTerms()
@@ -68,11 +79,11 @@ namespace Vinted.Hw.Services
             {
                 if (shippingPriceTermEntity.CarrierCode == provider)
                 {
-                    return true;
+                    return;
                 }
             }
 
-            return false;
+            throw new Exception("such carrier doesn't exist");
         }
     }
 }
