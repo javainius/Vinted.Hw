@@ -1,6 +1,6 @@
 ﻿using Vinted.Hw.Entities;
 
-namespace Vinted.Hw.Persistence
+namespace Vinted.Hw.Persistence.Interfaces
 {
     public interface ITransactionRepository
     {

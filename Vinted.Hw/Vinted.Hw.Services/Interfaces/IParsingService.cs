@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Vinted.Hw.Models;
 
-namespace Vinted.Hw.Services
+namespace Vinted.Hw.Services.Interfaces
 {
     public interface IParsingService
     {

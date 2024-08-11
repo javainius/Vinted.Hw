@@ -6,7 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Vinted.Hw.Entities;
 using Vinted.Hw.Models;
-using Vinted.Hw.Persistence;
+using Vinted.Hw.Persistence.Interfaces;
+using Vinted.Hw.Services.Interfaces;
 
 namespace Vinted.Hw.Services
 {
@@ -24,7 +25,7 @@ namespace Vinted.Hw.Services
             List<TransactionModel> parsedTransactions = new();
 
             foreach (string line in transactionLines)
-            {             
+            {
                 parsedTransactions.Add(GetParsedTransaction(line));
             }
 
@@ -63,7 +64,7 @@ namespace Vinted.Hw.Services
                 .GetShippingPriceTerms()
                 .ShippingPriceTermEntitiesToShippingPriceTermModels();
 
-            foreach(ShippingPriceModel shippingPriceTermEntity in shippingPriceTermModels)
+            foreach (ShippingPriceModel shippingPriceTermEntity in shippingPriceTermModels)
             {
                 if (shippingPriceTermEntity.CarrierCode == provider)
                 {

@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vinted.Hw.Persistence", "Vi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vinted.Hw.Entities", "Vinted.Hw\Vinted.Hw.Entities\Vinted.Hw.Entities.csproj", "{B7CF1E17-D64A-4ADC-BDF8-6E592712A011}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vinted.Hw.UnitTests", "Vinted.Hw.UnitTests\Vinted.Hw.UnitTests.csproj", "{DF01DAE1-C445-4103-94CE-4EC26795C656}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{B7CF1E17-D64A-4ADC-BDF8-6E592712A011}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7CF1E17-D64A-4ADC-BDF8-6E592712A011}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7CF1E17-D64A-4ADC-BDF8-6E592712A011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF01DAE1-C445-4103-94CE-4EC26795C656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF01DAE1-C445-4103-94CE-4EC26795C656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF01DAE1-C445-4103-94CE-4EC26795C656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF01DAE1-C445-4103-94CE-4EC26795C656}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

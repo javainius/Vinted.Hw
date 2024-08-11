@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Vinted.Hw.Entities;
+using Vinted.Hw.Persistence.Interfaces;
 
 namespace Vinted.Hw.Persistence
 {

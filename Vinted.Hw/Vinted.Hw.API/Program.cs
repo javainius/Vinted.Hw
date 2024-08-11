@@ -1,5 +1,7 @@
 using Vinted.Hw.Persistence;
+using Vinted.Hw.Persistence.Interfaces;
 using Vinted.Hw.Services;
+using Vinted.Hw.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

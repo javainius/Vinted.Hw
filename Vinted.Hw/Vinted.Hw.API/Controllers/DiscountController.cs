@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Vinted.Hw.Contracts;
 using Vinted.Hw.Models;
 using Vinted.Hw.Services;
+using Vinted.Hw.Services.Interfaces;
 
 namespace Vinted.Hw.API.Controllers
 {
@@ -17,33 +17,18 @@ namespace Vinted.Hw.API.Controllers
             _transactionService = transactionService;
         }
 
+        // all validation should be implemented inside of services
+        // then these services should be wrapped with service excpeption wrappers
         [HttpPost("ProcessDiscounts")]
         public async Task<IActionResult> ProcessDiscounts(IFormFile file)
         {
             if (file == null || file.Length == 0)
                 return BadRequest("No file uploaded.");
 
-            List<string> lines = new List<string>();
-            using (var reader = new StreamReader(file.OpenReadStream()))
-            {
-                while (!reader.EndOfStream)
-                {
-                    var line = await reader.ReadLineAsync();
-                    lines.Add(line);
-                }
-            }
+            List<TransactionModel> transactionModels = await _transactionService.GetProcessedTransactions(file);
 
-            var processedContent = ProcessFileContent(lines);
-
-            return Ok(processedContent);
+            return Ok(transactionModels.TransactionModelsToTransactionContracts());
         }
 
-        private List<TransactionContract> ProcessFileContent(List<string> lines)
-        {
-            List<string> transactionLines = lines.Select(line => line.ToUpper()).ToList();
-            List<TransactionContract> transactionContracts = _transactionService.GetProcessedTransactions(transactionLines).TransactionModelsToTransactionContracts();
-
-            return transactionContracts;
-        }
     }
 }
