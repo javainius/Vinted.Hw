@@ -5,6 +5,7 @@ using Vinted.Hw.Entities;
 using Vinted.Hw.Models;
 using Vinted.Hw.Persistence.Interfaces;
 using Vinted.Hw.Services;
+using Vinted.Hw.Services.Mappins;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Vinted.Hw.UnitTests

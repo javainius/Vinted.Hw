@@ -1,8 +1,8 @@
 ﻿using Vinted.Hw.Contracts;
 using Vinted.Hw.Models;
-using Vinted.Hw.Services;
+using Vinted.Hw.Services.Mappins;
 
-namespace Vinted.Hw.API
+namespace Vinted.Hw.API.Mappings
 {
     public static class Mapper
     {

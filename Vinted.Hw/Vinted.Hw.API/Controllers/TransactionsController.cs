@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Vinted.Hw.API.Mappings;
 using Vinted.Hw.Contracts;
 using Vinted.Hw.Models;
 using Vinted.Hw.Services;

@@ -1,3 +1,9 @@
+- To launch the dotnet application you will need to navigate to Vinted.Hw\Vinted.Hw.API and execute: "dotnet run" or you can do it by using VisualStudio IDE. 
+- To run tests: navigate to Vinted.Hw\Vinted.Hw.UnitTests and execute "dotnet test"
+
 Things to note:
-- I used LINQ which is not additional but built in library in C#
-- It always depends on agreement but in my opinion void methods should be used to update repositories, make API calls or change some application states. For this reason when I make a change for an object I'm always returning it. 
+- I used LINQ which is not additional but built in C# library.
+- I have decided to do a little more for this task but unexpectedly I had a really busy weak so I have written tests only for the ParsingClass and haven't made a console application which would have used Services layer.
+- Haven't made a propper exception throwing and handling. An exception handling wrapper should wrap the services layer and then in the middle ware should be done a propper request exception structure which would be returned back to a user.
+- By executing the same request with the same file, each time the Transactions.json file should be deleted or removed the data in it
+

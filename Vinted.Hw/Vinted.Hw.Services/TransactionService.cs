@@ -12,6 +12,7 @@ using Vinted.Hw.Entities;
 using Vinted.Hw.Models;
 using Vinted.Hw.Persistence.Interfaces;
 using Vinted.Hw.Services.Interfaces;
+using Vinted.Hw.Services.Mappins;
 
 namespace Vinted.Hw.Services
 {

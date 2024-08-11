@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Vinted.Hw.Entities;
 using Vinted.Hw.Models;
 
-namespace Vinted.Hw.Services
+namespace Vinted.Hw.Services.Mappins
 {
     public static class Mappers
     {
@@ -94,13 +94,13 @@ namespace Vinted.Hw.Services
             };
         }
 
-        public static Models.PackageSize StringToPackageSize(this string packageSize)
+        public static PackageSize StringToPackageSize(this string packageSize)
         {
             return packageSize switch
             {
-                "S" => Models.PackageSize.Small,
-                "M" => Models.PackageSize.Medium,
-                "L" => Models.PackageSize.Large,
+                "S" => PackageSize.Small,
+                "M" => PackageSize.Medium,
+                "L" => PackageSize.Large,
                 _ => throw new ArgumentException($"Invalid package size: {packageSize}")
             };
         }
@@ -109,9 +109,9 @@ namespace Vinted.Hw.Services
         {
             return packageSize switch
             {
-                Models.PackageSize.Small => "S",
-                Models.PackageSize.Medium => "M",
-                Models.PackageSize.Large => "L",
+                PackageSize.Small => "S",
+                PackageSize.Medium => "M",
+                PackageSize.Large => "L",
             };
         }
     }
